@@ -776,6 +776,18 @@ input:focus {
     form>div {
         margin-bottom: 8px;
     }
+
+    .newWidth {
+        width: auto !important;
+    }
+
+    .newGap {
+        gap: 10px !important;
+    }
+
+    .newGap0 {
+        gap: 1px !important;
+    }
 }
 
 @media only screen and (max-width: 727px) {

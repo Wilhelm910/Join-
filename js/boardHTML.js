@@ -184,7 +184,7 @@ function renderInviteNewContactArea(i) {
 
 function renderAddTaskFromBoard() {
     return /*html*/ `
-    <div class="add-task-byboard-container" onclick="stopPropagation(event)">
+    <div class="add-task-byboard-container" id="add-task-byboard-container" onclick="stopPropagation(event)">
      <div class="headline-mobile-container">
             <p id="headline-mobile">Kanban Project Management Tool</p>
         </div>
@@ -193,9 +193,9 @@ function renderAddTaskFromBoard() {
                 <div>
                     <h1>Add Task</h1>
                 </div>
-                <form class="flex-column gap-20" onsubmit="readForm(); return false;">
+                <form class="flex-column gap-20 newGap0" onsubmit="readForm(); return false;">
                     <div class="flex mobile-flex-column">
-                        <div class="flex-column gap-20 left-side">
+                        <div class="flex-column gap-20 left-side newWidth">
                             <span>Title</span>
                             <input required placeholder="Enter a title" id="title" type="text">
                             <span>Description</span>
@@ -231,7 +231,7 @@ function renderAddTaskFromBoard() {
                                 <img class="arrow" onclick="dropdown('contact')" id="arrowContact" src="./assets/img/arrow-down.svg">
                             </div>
                         </div>
-                        <div class="flex-column gap-20 right-side">
+                        <div class="flex-column gap-20 right-side newWidth newGap">
                             <span>Due Date</span>
                             <input required id="date" type="date">
                             <span>Prio</span>

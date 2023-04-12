@@ -38,6 +38,7 @@ function saveTaskStatusFromBoard(savedTaskStatus) {
     overlay.classList.remove('d-none')
     overlay.classList.add('overlay-bg')
     overlay.innerHTML = renderAddTaskFromBoard()
+    initAddTask()
     //window.document.location.href = "./add_task.html";
 }
 
