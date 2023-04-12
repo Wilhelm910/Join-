@@ -5,6 +5,7 @@ let selectedContacts = [];
 let inAnimation = false;
 let sTStatus = [];
 let taskStatus;
+let subtasks = [];
 
 
 
