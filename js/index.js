@@ -22,7 +22,6 @@ async function addUsers() {
   let password = document.getElementById("signUpPassword");
   for (let i = 0; i < users.length; i++) {
     if (users[i].email.includes(email.value)) {
-      console.log("email already exists")
       emailAlreadyInUse = true;
       name.value = ''
       email.value = ''
@@ -30,7 +29,6 @@ async function addUsers() {
     }
   }
   if (!emailAlreadyInUse) {
-    console.log("user successfull created")
     users.push({
       name: name.value,
       email: email.value,
