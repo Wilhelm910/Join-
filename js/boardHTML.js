@@ -65,14 +65,14 @@ function htmlRenderEditTask(i) {
     return /*html*/ `
     <div class="edit-task-card">
         <div></div>
-        <form class="edit-task-form"; onsubmit="return false;">
+        <form class="edit-task-form"; onsubmit="closeForm(${i}); return false ;">
             <div>
                 <p>Title</p>
-                <input type="text" value="${tasks[i].title}" id="edit-task-title">
+                <input type="text" value="${tasks[i].title}" id="edit-task-title" required >
             </div>
             <div>
                 <p>Description</p>
-                <input type="textarea" value="${tasks[i].description}" id="edit-task-description">
+                <input type="textarea" value="${tasks[i].description}" id="edit-task-description" required>
             </div>
             <div id="edit-task-subtasks-container">
             </div>
@@ -142,7 +142,7 @@ function htmlRenderEditTask(i) {
             <div id="contact-card-container" class="${i}">
             </div>
             <div class="edit-task-btn-container">
-            <button id="edit-task-btn" onclick="closeForm(${i})">
+            <button id="edit-task-btn">
                 <p>OK</p>
                 <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 7.5L7 13.5L17 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -47,30 +47,33 @@ function getSavedTaskStatus() {
  * @param {*} date - date input
  */
 async function addTask(title, description, date) {
-    let newTask = {
-        'status': taskStatus,
-        'title': title.value,
-        'description': description.value,
-        'category': selectedCategory,
-        'contactSelection': selectedContacts,
-        'date': date.value,
-        'prio': prio,
-        'subtasks': subtasks,
-        'sTStatus': sTStatus
-    };
-    await downloadFromServer();
-    tasks = JSON.parse(backend.getItem('tasks')) || [];
-    tasks.push(newTask);
-    await backend.setItem('tasks', JSON.stringify(tasks));
-    clearSavedTaskStatus()
-    clearForm();
-    showTaskAdded();
+    if (prio == undefined || selectedCategory == undefined) {
+        prompt("select category and or priority")
+    } else {
+        let newTask = {
+            'status': taskStatus,
+            'title': title.value,
+            'description': description.value,
+            'category': selectedCategory,
+            'contactSelection': selectedContacts,
+            'date': date.value,
+            'prio': prio,
+            'subtasks': subtasks,
+            'sTStatus': sTStatus
+        };
+        await downloadFromServer();
+        tasks = JSON.parse(backend.getItem('tasks')) || [];
+        tasks.push(newTask);
+        await backend.setItem('tasks', JSON.stringify(tasks));
+        clearSavedTaskStatus()
+        clearForm();
+        showTaskAdded();
+    }
 }
 
 
 
 function clearSavedTaskStatus() {
-    console.log("test");
     savedTaskStatus = '';
     localStorage.setItem(`savedTaskStatus`, JSON.stringify(savedTaskStatus));
 }
@@ -115,6 +118,9 @@ async function clearForm() {
     renderContacts();
     selectCategory('reload');
     setprio();
+    setTimeout(() => {
+        window.document.location.href = "./board.html";
+    }, 1000);
 }
 
 

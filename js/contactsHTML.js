@@ -1,7 +1,7 @@
 function htmlTemplateRenderAlphabet(i) {
     return /*html*/ `
     <div class="alphabet">&nbsp;&nbsp;&nbsp;&nbsp;${alphabet[i]}<div class="thin-line"></div></div>
-    <div id=group-${alphabet[i]}></div>
+    <div style="margin-bottom:8px" id=group-${alphabet[i]}></div>
     `;
 }
 
@@ -14,7 +14,7 @@ function htmlTemplateRenderAllContacts(contact, i) {
         </div>
         <div>
             <p>${contact['name']}</p>
-            <a href="mailto:${contact['email']}">${contact['email']}</a>
+            <p style="font-size:14px; color:#0000EE">${contact['email']}</p>
         </div>
     </div>	
     `;

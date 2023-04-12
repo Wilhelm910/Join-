@@ -44,9 +44,9 @@ function saveTaskStatusFromBoard(savedTaskStatus) {
  * 
  */
 function loadTasks() {
-    document.getElementById('to-do-container').innerHTML = ''
-    document.getElementById('in-progress-container').innerHTML = ''
-    document.getElementById('awaiting-feedback-container').innerHTML = ''
+    document.getElementById('toDo-container').innerHTML = ''
+    document.getElementById('inProgress-container').innerHTML = ''
+    document.getElementById('awaitingFeedback-container').innerHTML = ''
     document.getElementById('done-container').innerHTML = ''
     filterTasks()
 }
@@ -56,7 +56,7 @@ function loadTasks() {
  * This function is used to so sort the content from the backend
  * 
  */
-function filterTasks() {
+/*function filterTasks() {
     for (let i = 0; i < tasks.length; i++) {
         let currentTask = tasks[i]
         if (currentTask.status == 'toDo') {
@@ -72,6 +72,13 @@ function filterTasks() {
             let content = document.getElementById('done-container')
             forwardTaskContent(currentTask, content, i)
         }
+    }
+}*/
+function filterTasks() {
+    for (let i = 0; i < tasks.length; i++) {
+        let currentTask = tasks[i]
+        let content = document.getElementById(`${currentTask.status}-container`)
+        forwardTaskContent(currentTask, content, i)
     }
 }
 
@@ -354,19 +361,9 @@ function renderCardContactsEdit(i) {
  */
 function getCardPrioImg(i) {
     let content = document.getElementById(`card-${tasks[i].prio}`)
-    if (content.id == `card-low`) {
-        let img = document.createElement('img')
-        img.src = 'assets/img/prio-low copy.svg'
-        content.appendChild(img)
-    } else if (content.id == `card-medium`) {
-        let img = document.createElement('img')
-        img.src = 'assets/img/prio-medium copy.svg'
-        content.appendChild(img)
-    } else if (content.id == `card-urgent`) {
-        let img = document.createElement('img')
-        img.src = 'assets/img/prio-urgent copy.svg'
-        content.appendChild(img)
-    }
+    let img = document.createElement('img')
+    img.src = `assets/img/${content.id}.svg`
+    content.appendChild(img)
 }
 
 /**
@@ -822,7 +819,7 @@ function highlightArea(id) {
  * 
  */
 function editToDoArea() {
-    let toDo = document.getElementById('to-do-container')
+    let toDo = document.getElementById('toDo-container')
     let toDoDragArea = document.getElementById('to-do-container-drag-area')
     if (toDo.innerHTML.length == 0) {
         toDoDragArea.classList.add('margin-top')
@@ -835,7 +832,7 @@ function editToDoArea() {
  * 
  */
 function editInProgress() {
-    let inProgress = document.getElementById('in-progress-container')
+    let inProgress = document.getElementById('inProgress-container')
     let inProgressDragArea = document.getElementById('in-progress-container-drag-area')
     if (inProgress.innerHTML.length == 0) {
         inProgressDragArea.classList.add('margin-top')
@@ -848,7 +845,7 @@ function editInProgress() {
  * 
  */
 function editAwaitFeed() {
-    let awaitFeed = document.getElementById('awaiting-feedback-container')
+    let awaitFeed = document.getElementById('awaitingFeedback-container')
     let awaitFeedDragArea = document.getElementById('awaiting-feedback-container-drag-area')
     if (awaitFeed.innerHTML.length == 0) {
         awaitFeedDragArea.classList.add('margin-top')

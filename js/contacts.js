@@ -13,7 +13,6 @@ async function init() {
 	setURL('https://wilhelm-teicke.developerakademie.net/Join/smallest_backend_ever');
     await downloadFromServer();
 	contacts = JSON.parse(backend.getItem('contacts')) || [];
-
 	renderContacts();
 }
 
@@ -64,7 +63,7 @@ function createAlphabet() {
  * 
  */
 function getFirstLetter(contact) {
-	return contact["name"].charAt(0);
+	return contact["name"].charAt(0).toUpperCase();
 }
 
 
