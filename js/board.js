@@ -34,7 +34,11 @@ async function loadBackend() {
 function saveTaskStatusFromBoard(savedTaskStatus) {
     savedTaskStatus[0] = savedTaskStatus
     localStorage.setItem(`savedTaskStatus`, JSON.stringify(savedTaskStatus));
-    window.document.location.href = "./add_task.html";
+    let overlay = document.getElementById('overlay')
+    overlay.classList.remove('d-none')
+    overlay.classList.add('overlay-bg')
+    overlay.innerHTML = renderAddTaskFromBoard()
+    //window.document.location.href = "./add_task.html";
 }
 
 
@@ -214,7 +218,7 @@ function renderContactSelection(currentTask, i) {
 function showAllContacts(currentTask, i, currentContact, j) {
     document.getElementById(`contact-selection-${currentTask.status}_${i}`).innerHTML +=
     /*html*/ `
-    <div class="circle" id="${contacts[j].ID}_${i}">${currentContact}</div>
+    <div class="circleB" id="${contacts[j].ID}_${i}">${currentContact}</div>
     `
 }
 
@@ -231,12 +235,12 @@ function showFirstTwoContacts(k, currentTask, i, currentContact, j) {
     if (k < 2) {
         document.getElementById(`contact-selection-${currentTask.status}_${i}`).innerHTML +=
         /*html*/ `
-        <div class="circle" id="${contacts[j].ID}_${i}">${currentContact}</div>
+        <div class="circleB" id="${contacts[j].ID}_${i}">${currentContact}</div>
         `
     } else if (k == 2) {
         document.getElementById(`contact-selection-${currentTask.status}_${i}`).innerHTML +=
         /*html*/ `
-        <div style="background-color:#2A3647;" class="circle" id="remaining-contacts-number-${i}">${'+' + (currentTask.contactSelection.length - 2)}</div>
+        <div style="background-color:#2A3647;" class="circleB" id="remaining-contacts-number-${i}">${'+' + (currentTask.contactSelection.length - 2)}</div>
         `
     }
 }
@@ -319,7 +323,7 @@ function renderCardContacts(i) {
                 container.innerHTML +=
                 /*html*/ `
                 <div class="contact-card-content">
-                    <p class="circle" style="background-color:${contact.color}">${contact.initials}</p> 
+                    <p class="circleB" style="background-color:${contact.color}">${contact.initials}</p> 
                     <p>${contact.name}</p>
                 </div>
                 `
@@ -345,7 +349,7 @@ function renderCardContactsEdit(i) {
                 container.innerHTML +=
                 /*html*/ `
                 <div class="contact-card-content">
-                    <p class="circle" style="background-color:${contact.color}">${contact.initials}</p> 
+                    <p class="circleB" style="background-color:${contact.color}">${contact.initials}</p> 
                 </div>
                 `
             }
@@ -413,7 +417,7 @@ function renderEditTask(i) {
         for (let j = 0; j < tasks[i].subtasks.length; j++) {
             subtasks.innerHTML +=
             /*html*/`
-                <div class="subtasks">${tasks[i].subtasks[j]} <input onclick="updateSubtask(${j},${i})" id="subtask-${j}" class="checkbox" type="checkbox"></div>
+                <div class="subtasksB">${tasks[i].subtasks[j]} <input onclick="updateSubtask(${j},${i})" id="subtask-${j}" class="checkbox" type="checkbox"></div>
             `
         }
         checkForCompletedSubtasks(i)
@@ -659,8 +663,8 @@ async function renderContacts(i) {
  * @param {number} i 
  */
 function inviteNewContact(i) {
-    let area = 'contact'
-    dropup(area)
+    let areaB = 'contact'
+    dropup(areaB)
     let content = document.getElementById('contactShow')
     content.innerHTML = renderInviteNewContactArea(i)
 }
@@ -677,7 +681,7 @@ function checkForSelectedContacts() {
         let i = container.className.slice(0, 1)
         let contact = contacts[j];
         if (tasks[i].contactSelection.includes(contact.ID)) {
-            document.getElementById(`cb-contacts-${j}`).checked = true
+            document.getElementById(`cb-contacts-${contact.ID}`).checked = true
         }
     }
 }
@@ -688,7 +692,7 @@ function checkForSelectedContacts() {
  * 
  * @param {number} i 
  */
-function showDropDown(i) {
+function showDropDownB(i) {
     loadEditTask(i)
 }
 
@@ -696,18 +700,18 @@ function showDropDown(i) {
  * 
  * This function is used to open the drop down menu
  * 
- * @param {string} area 
+ * @param {string} areaB 
  * @param {number} i 
  */
-function dropdown(area, i) {
+function dropdownB(areaB, i) {
     if (!inAnim) {
-        let content = document.getElementById(area);
-        let bigArea = area[0].toUpperCase() + area.slice(1);
+        let content = document.getElementById(areaB);
+        let bigArea = areaB[0].toUpperCase() + areaB.slice(1);
         content.classList.remove('d-none')
-        document.getElementById(area + 'Show').style = 'animation: dropdown 2s ease;'
+        document.getElementById(areaB + 'Show').style = 'animation: dropdown 2s ease;'
         document.getElementById(`arrow${bigArea}`).style = 'animation: arrowUp 350ms ease; transform: rotate(180deg);'
-        document.getElementById(`select${bigArea}`).setAttribute('onclick', `dropup('${area}')`);
-        document.getElementById(`arrow${bigArea}`).setAttribute('onclick', `dropup('${area}')`);
+        document.getElementById(`select${bigArea}`).setAttribute('onclick', `dropup('${areaB}')`);
+        document.getElementById(`arrow${bigArea}`).setAttribute('onclick', `dropup('${areaB}')`);
         checkForSelectedContacts(i)
     }
 }
@@ -716,16 +720,16 @@ function dropdown(area, i) {
  * 
  * This function is used to close the drop down menu
  * 
- * @param {string} area 
+ * @param {string} areaB 
  */
-function dropup(area) {
-    let content = document.getElementById(area);
-    let areaShow = document.getElementById(area + 'Show')
+function dropupB(areaB) {
+    let content = document.getElementById(areaB);
+    let areaShow = document.getElementById(areaB + 'Show')
     inAnim = true;
-    let bigArea = area[0].toUpperCase() + area.slice(1);
+    let bigArea = areaB[0].toUpperCase() + areaB.slice(1);
     editEndHeight(areaShow);
-    document.getElementById('select' + bigArea).setAttribute('onclick', `dropdown('${area}')`);
-    document.getElementById('arrow' + bigArea).setAttribute('onclick', `dropdown('${area}')`);
+    document.getElementById('select' + bigArea).setAttribute('onclick', `dropdown('${areaB}')`);
+    document.getElementById('arrow' + bigArea).setAttribute('onclick', `dropdown('${areaB}')`);
     areaShow.style = 'animation: dropup 500ms ease;';
     document.getElementById('arrow' + bigArea).style = 'animation: arrowDown 350ms ease;';
     setTimeout(() => {

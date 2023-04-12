@@ -128,6 +128,7 @@ async function clearForm() {
  * this function added the subtasks
  */
 function addSubtask() {
+    
     let subTask = document.getElementById('subtask');
     let content = document.getElementById('subtasks');
     content.innerHTML = '';

@@ -89,9 +89,6 @@ function initial() {
   document.getElementById("capaOne").classList.add("animation");
   document.getElementById("capaOneWhite").classList.add("animation");
   document.getElementById("capaOneContainer").classList.add("ausblenden");
-  /*if (window.matchMedia("(max-width: 600px)").matches) {
-    document.getElementById("capaOneWhite").classList.add("ausblenden");
-  }*/
   setTimeout(() => {
     let capaOneContainer = document.getElementById("capaOneContainer");
     capaOneContainer.style.zIndex = "0";
