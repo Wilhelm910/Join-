@@ -45,7 +45,7 @@ function saveTaskStatusFromBoard(savedTaskStatus) {
                 headerMenu.classList.remove('d-none')
             }
         }
-    }, 500);
+    }, 600);
     overlay.classList.remove('d-none')
     overlay.classList.add('overlay-bg')
     overlay.classList.add('overlay-bg-white')
@@ -59,6 +59,8 @@ function closeEditTaskOnBoard() {
     overlay.classList.add('d-none')
     overlay.classList.remove('overlay-bg')
     overlay.classList.remove('overlay-bg-white')
+    document.getElementById('header-menu-container').classList.remove('d-none')
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 
@@ -80,24 +82,6 @@ function loadTasks() {
  * This function is used to so sort the content from the backend
  * 
  */
-/*function filterTasks() {
-    for (let i = 0; i < tasks.length; i++) {
-        let currentTask = tasks[i]
-        if (currentTask.status == 'toDo') {
-            let content = document.getElementById('to-do-container')
-            forwardTaskContent(currentTask, content, i)
-        } else if (currentTask.status == 'inProgress') {
-            let content = document.getElementById('in-progress-container')
-            forwardTaskContent(currentTask, content, i)
-        } else if (currentTask.status == 'awaitingFeedback') {
-            let content = document.getElementById('awaiting-feedback-container')
-            forwardTaskContent(currentTask, content, i)
-        } else if (currentTask.status == 'done') {
-            let content = document.getElementById('done-container')
-            forwardTaskContent(currentTask, content, i)
-        }
-    }
-}*/
 function filterTasks() {
     for (let i = 0; i < tasks.length; i++) {
         let currentTask = tasks[i]

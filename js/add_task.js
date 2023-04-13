@@ -68,17 +68,30 @@ async function addTask(title, description, date) {
         clearSavedTaskStatus()
         clearForm();
         showTaskAdded();
-        if (document.getElementById('add-task-byboard-container')) {
-            for (let i = 1; i < 9999; i++) window.clearInterval(i);
-        }
-        setTimeout(() => {
-            window.document.location.href = "./board.html";
-        }, 1000);
+        intervalsAndNextPage();
     }
 }
 
+/**
+ * 
+ * This function is used to stop all intervals and go to board
+ * 
+ */
+function intervalsAndNextPage() {
+    if (document.getElementById('add-task-byboard-container')) {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    }
+    setTimeout(() => {
+        window.document.location.href = "./board.html";
+    }, 1000);
+}
 
 
+/**
+ * 
+ * This function is used to clear the status from local storage
+ * 
+ */
 function clearSavedTaskStatus() {
     savedTaskStatus = '';
     localStorage.setItem(`savedTaskStatus`, JSON.stringify(savedTaskStatus));

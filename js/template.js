@@ -81,24 +81,41 @@ function toggleLogoutBtn() {
 function removeOverlay() {
   setTimeout(() => {
     document.getElementById('header-extended-menu-container').classList.add('d-none')
-  }, 200);
-  setTimeout(() => {
     document.getElementById('overlay').classList.add('d-none')
-  }, 200);
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }, 100);
   document.getElementById('body').classList.remove('overflow-hidden')
+  document.getElementById('header-menu-container').classList.remove('d-none')
+  whenInnerWidth()
+  whenAddTask()
+}
+
+
+/**
+ * 
+ * This funciton is used to remove the overlay
+ * 
+ */
+function whenInnerWidth() {
   if (window.innerWidth < 1000) {
     document.getElementById('slide-container').classList.add('slide-out')
     main.classList.remove('d-none')
   }
+}
+
+/**
+ * 
+ * This funciton is used to remove the overlay
+ * 
+ */
+function whenAddTask() {
   if (document.getElementById('add-task-byboard-container')) {
     setTimeout(() => {
       document.getElementById('add-task-byboard-container').classList.add('d-none')
-      for (let i = 1; i < 9999; i++) window.clearInterval(i);
-    }, 500);
+    }, 200);
     document.getElementById('add-task-byboard-container').classList.add('slide-outA')
   }
 }
-
 
 /**
  * 
