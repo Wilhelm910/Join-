@@ -25,7 +25,7 @@
     display: none;
 }
 
-.user-icon {
+.user-iconB {
     border-radius: 50%;
     border: 3px solid #2A3647;
 }
@@ -102,7 +102,7 @@ a {
     }
 
     100% {
-        transform: translateX(300px);
+        transform: translateX(400px);
     }
 }
 
@@ -150,4 +150,33 @@ a {
     #header-extended-menu-container>div {
         padding: 0px 24px;
     }
+
+    
+.slide-inA {
+    animation: Slide-left 0.2s ease-in-out;
+}
+
+@keyframes Slide-left {
+    0% {
+        transform: translateX(600px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slide-outA {
+    animation: Slide-right 0.25s ease-in-out;
+}
+
+@keyframes Slide-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(600px);
+    }
+}
 }

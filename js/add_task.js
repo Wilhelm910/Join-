@@ -68,6 +68,12 @@ async function addTask(title, description, date) {
         clearSavedTaskStatus()
         clearForm();
         showTaskAdded();
+        if (document.getElementById('add-task-byboard-container')) {
+            for (let i = 1; i < 9999; i++) window.clearInterval(i);
+        }
+        setTimeout(() => {
+            window.document.location.href = "./board.html";
+        }, 1000);
     }
 }
 
@@ -118,9 +124,6 @@ async function clearForm() {
     renderContacts();
     selectCategory('reload');
     setprio();
-    setTimeout(() => {
-        window.document.location.href = "./board.html";
-    }, 1000);
 }
 
 
@@ -128,7 +131,7 @@ async function clearForm() {
  * this function added the subtasks
  */
 function addSubtask() {
-    
+
     let subTask = document.getElementById('subtask');
     let content = document.getElementById('subtasks');
     content.innerHTML = '';

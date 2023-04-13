@@ -82,11 +82,20 @@ function removeOverlay() {
   setTimeout(() => {
     document.getElementById('header-extended-menu-container').classList.add('d-none')
   }, 200);
-  document.getElementById('overlay').classList.add('d-none')
+  setTimeout(() => {
+    document.getElementById('overlay').classList.add('d-none')
+  }, 200);
   document.getElementById('body').classList.remove('overflow-hidden')
   if (window.innerWidth < 1000) {
     document.getElementById('slide-container').classList.add('slide-out')
     main.classList.remove('d-none')
+  }
+  if (document.getElementById('add-task-byboard-container')) {
+    setTimeout(() => {
+      document.getElementById('add-task-byboard-container').classList.add('d-none')
+      for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    }, 500);
+    document.getElementById('add-task-byboard-container').classList.add('slide-outA')
   }
 }
 

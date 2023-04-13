@@ -35,11 +35,30 @@ function saveTaskStatusFromBoard(savedTaskStatus) {
     savedTaskStatus[0] = savedTaskStatus
     localStorage.setItem(`savedTaskStatus`, JSON.stringify(savedTaskStatus));
     let overlay = document.getElementById('overlay')
+    body.classList.add('overflow-hidden')
+    setInterval(() => {
+        if (document.getElementById('add-task-byboard-container')) {
+            let headerMenu = document.getElementById('header-menu-container')
+            if (window.innerWidth <= 1000) {
+                headerMenu.classList.add('d-none')
+            } else {
+                headerMenu.classList.remove('d-none')
+            }
+        }
+    }, 500);
     overlay.classList.remove('d-none')
     overlay.classList.add('overlay-bg')
+    overlay.classList.add('overlay-bg-white')
     overlay.innerHTML = renderAddTaskFromBoard()
     initAddTask()
-    //window.document.location.href = "./add_task.html";
+}
+
+function closeEditTaskOnBoard() {
+    body.classList.remove('overflow-hidden')
+    let overlay = document.getElementById('overlay')
+    overlay.classList.add('d-none')
+    overlay.classList.remove('overlay-bg')
+    overlay.classList.remove('overlay-bg-white')
 }
 
 

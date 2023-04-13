@@ -446,7 +446,7 @@ form>div>p {
 .edit-task-container>div:hover {
     cursor: pointer;
     background-color: #29ABE2;
-   
+
 }
 
 #edit-task-btn:hover {
@@ -660,7 +660,7 @@ input:focus {
     justify-content: space-between;
     margin: 6px 0;
     padding: 6px 12px;
-    background-color:#F5F5F5;
+    background-color: #F5F5F5;
     border-radius: 10px;
 }
 
@@ -708,7 +708,9 @@ input:focus {
     background-color: rgba(5, 5, 5, 0.3);
 }
 
-
+.card-close-icon-container-edit-task {
+    display: none;
+}
 
 @media only screen and (min-width: 1000px) {
     .board-create-new-task-btn {
@@ -777,17 +779,35 @@ input:focus {
         margin-bottom: 8px;
     }
 
-    .newWidth {
-        width: auto !important;
+
+
+    .add-task-byboard-container {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        top: 90px;
+        border-radius: 0;
     }
 
-    .newGap {
-        gap: 10px !important;
+    .overlay-bg-white {
+        background-color: rgba(0, 0, 0, 0)
     }
 
-    .newGap0 {
-        gap: 1px !important;
+    .container-color-grey {
+        background-color: #F5F5F5;
     }
+
+    .card-close-icon-container-edit-task {
+        overflow-y: auto;
+        margin: 0 0 -16px 0 !important;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+
+    .card-close-icon-container-edit-task:hover {
+        cursor: pointer;
+    }
+   
 }
 
 @media only screen and (max-width: 727px) {
